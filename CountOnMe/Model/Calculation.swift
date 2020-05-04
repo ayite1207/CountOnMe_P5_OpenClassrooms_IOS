@@ -18,18 +18,15 @@ class Calculation {
     }
     // Error check computed variables
     var expressionIsCorrect: Bool {
+        print("hello \(elements)")
         return elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/"
     }
     // check if there are enough elements to make an operation
     var expressionHaveEnoughElement: Bool {
-        print("il y a \(elements.count) elements")
         return elements.count >= 3
     }
     // allows to know if the last element selected is an operator
     var canAddOperator: Bool {
-        if let operato = elements.last {
-            print(operato)
-        }
         return elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/"
     }
     // allows to know if the element = is in the textView

@@ -21,25 +21,20 @@ class ViewController: UIViewController {
     
     // View actions
     @IBAction func tappedNumberButton(_ sender: UIButton) {
-        
-       
         guard let numberText = sender.title(for: .normal) else {
             return
         }
-        calculation.expression.append(contentsOf: numberText)
-        print("expression AU DEBUT = \(calculation.expression)")
                print("tappedNumberButton")
         print(calculation.expressionHaveResult)
         if calculation.expressionHaveResult {
             print("expressionHaveResult = true")
-            
             textView.text = ""
+            calculation.expression = ""
         }else{
             print("expressionHaveResult = false")
         }
-        
         textView.text.append(numberText)
-        
+        calculation.expression.append(contentsOf: numberText)
         print("expression A LA FIN = \(calculation.expression)")
     }
     
