@@ -16,6 +16,7 @@ class CalculationTestCase: XCTestCase {
         super.setUp()
         calculation = Calculation()
     }
+
         func testGivenExpressionHaveValue_WhenITappeOnAButton_ThenVariableExpressionHaveResultShoukdBeTrue(){
 
 //          when ExpressionHaveValue
@@ -32,6 +33,14 @@ class CalculationTestCase: XCTestCase {
 //          then variableCanAddOperatorShoukdBeTrue
             XCTAssertTrue(calculation.canAddOperator)
         }
+        func testGivenAddOperator_WhenITappeOnANumber_ThenVariableExpressionIsCorrectShoukdBeTrue(){
+
+//          when ExpressionHaveValue
+                calculation.expression = "2"
+                
+//          then variableCanAddOperatorShoukdBeTrue
+                XCTAssertTrue(calculation.expressionIsCorrect)
+        }
     func testGivenAddOperator_WhenITappeOnEqual_ThenVariableExpressionHaveEnoughElementShouldBeTrue(){
 
     //          when ExpressionHaveValue
@@ -43,11 +52,10 @@ class CalculationTestCase: XCTestCase {
     
     func testGivenAddOperator_WhenITappeOnEqual_ThenFunctionresultShouldReturnTheResult(){
 
-    //          when ExpressionHaveValue
+    //          when ITappeOnEqual
                 calculation.expression = "2 + 5"
         
-    //          then variableCanAddOperatorShoukdBeTrue
+    //          then ThenFunctionresultShouldReturnTheResult
                 XCTAssert(calculation.result() == "2 + 5 = 7")
             }
-    
 }
