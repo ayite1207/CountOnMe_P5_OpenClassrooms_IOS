@@ -18,7 +18,6 @@ class Calculation {
     }
     // Error check computed variables
     var expressionIsCorrect: Bool {
-        print("hello \(elements)")
         return elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/"
     }
     // check if there are enough elements to make an operation
@@ -33,7 +32,13 @@ class Calculation {
     var expressionHaveResult: Bool {
         return expression.firstIndex(of: "=") != nil
     }
-    
+    // allows to know if the textView is empty
+    var expressionIsEmpty: Bool {
+        return expression == ""
+    }
+    /**
+     result() allows to calculate and return the result
+     */
     func result()-> String{
         // Create local copy of operations
         var operationsToReduce = elements
@@ -43,7 +48,6 @@ class Calculation {
             let left = Int(operationsToReduce[0])!
             let operand = operationsToReduce[1]
             let right = Int(operationsToReduce[2])!
-            print("left = \(left) operand = \(operand) right = \(right)")
             let result: Int
             switch operand {
             case "+": result = left + right
@@ -55,9 +59,8 @@ class Calculation {
             operationsToReduce = Array(operationsToReduce.dropFirst(3))
             operationsToReduce.insert("\(result)", at: 0)
         }
+        
        expression = "\(resultat) = \(operationsToReduce.first!)"
-        print("operationsToReduce = \(operationsToReduce.first!)")
-        print("\(resultat) = \(operationsToReduce.first!)")
-        return "\(resultat) = \(operationsToReduce.first!)"
+        return expression
     }
 }
