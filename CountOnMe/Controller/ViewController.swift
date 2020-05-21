@@ -23,7 +23,11 @@ class ViewController: UIViewController {
     /**
      alertVC() allows to display a message when the expression is not correct
      */
+<<<<<<< HEAD
     func alertVC() {
+=======
+    fileprivate func alertVC() {
+>>>>>>> 8c58e29ac35996c2033efcab8921e142d62018c1
         let alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         return self.present(alertVC, animated: true, completion: nil)
@@ -85,16 +89,22 @@ class ViewController: UIViewController {
         - sender : represents the button equal the user pressed
      */
     @IBAction func tappedEqualButton(_ sender: UIButton) {
+<<<<<<< HEAD
         
+=======
+>>>>>>> 8c58e29ac35996c2033efcab8921e142d62018c1
         if calculation.expressionHaveResult {
             restartOperation()
         }
         
+<<<<<<< HEAD
         if calculation.divisionByZero {
             restartOperation()
             return alertVC()
         }
         
+=======
+>>>>>>> 8c58e29ac35996c2033efcab8921e142d62018c1
         guard calculation.expressionIsCorrect else {
             return alertVC()
         }

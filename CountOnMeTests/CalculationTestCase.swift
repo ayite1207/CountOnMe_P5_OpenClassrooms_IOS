@@ -29,7 +29,11 @@ class CalculationTestCase: XCTestCase {
             XCTAssertTrue(calculation.expressionHaveResult)
         }
     
+<<<<<<< HEAD
         func testGivenTheExpressionHasNoOperator_WhenITappeOnAOperator_ThenVariablesCanAddOperatorAndexpressionIsCorrectShoukdBeTrue(){
+=======
+        func testGivenTheExpressionHasNoOperator_WhenITappeOnAOperator_ThenVariableCanAddOperatorShoukdBeTrue(){
+>>>>>>> 8c58e29ac35996c2033efcab8921e142d62018c1
 
 //          when ExpressionHaveValue
             calculation.expression = "2"
@@ -38,8 +42,20 @@ class CalculationTestCase: XCTestCase {
             XCTAssertTrue(calculation.canAddOperator)
             XCTAssertTrue(calculation.expressionIsCorrect)
         }
+<<<<<<< HEAD
 
     func testGivenTheExprssionHasAddition_WhenITappeOnEqual_ThenVariableExpressionHaveEnoughElementShouldReturnTheResult(){
+=======
+        func testGivenTheExpressionHasNoOperator_WhenITappeOnANumber_ThenVariableExpressionIsCorrectShoukdBeTrue(){
+
+//          when ExpressionHaveValue
+                calculation.expression = "2"
+                
+//          then variableCanAddOperatorShoukdBeTrue
+                XCTAssertTrue(calculation.expressionIsCorrect)
+        }
+    func testGivenTheExprssionIsOK_WhenITappeOnEqual_ThenVariableExpressionHaveEnoughElementShouldBeTrue(){
+>>>>>>> 8c58e29ac35996c2033efcab8921e142d62018c1
 
     //          when ExpressionHaveValue
                 calculation.expression = "2 + 2"
@@ -49,6 +65,7 @@ class CalculationTestCase: XCTestCase {
                 XCTAssert(calculation.priority0f0perations() == "2 + 2 = 4")
                
             }
+<<<<<<< HEAD
     func testGivenTheExpressionHasAdditionAndSoustraction_WhenITappeOnEqual_ThenFunctionpriority0f0perationShouldReturnTheGoodResult(){
 
     //          when ITappeOnEqual
@@ -58,6 +75,10 @@ class CalculationTestCase: XCTestCase {
                 XCTAssert(calculation.priority0f0perations() == "5 + 5 - 2 = 8")
             }
     func testGivenTheExpressionHasAdditionAndMultiplication_WhenITappeOnEqual_ThenFunctionpriority0f0perationShouldReturnTheGoodResult(){
+=======
+    
+    func testGivenTheExprssionOK_WhenITappeOnEqual_ThenFunctionResultShouldReturnTheResult(){
+>>>>>>> 8c58e29ac35996c2033efcab8921e142d62018c1
 
     //          when ITappeOnEqual
                 calculation.expression = "5 + 5 x 2"
@@ -97,6 +118,7 @@ class CalculationTestCase: XCTestCase {
     //          then ThenVariableExpressionIsEmptyShouldBeTrue
                 XCTAssertTrue(calculation.expressionIsEmpty)
             }
+<<<<<<< HEAD
     func testGivenTheExpressionHasADivisionByZero_WhenITappeOnEqual_ThenVariableExpressionIsEmptyShouldBeTrue(){
 
     //          when ITappeOnEqual
@@ -138,6 +160,17 @@ class CalculationTestCase: XCTestCase {
        //          then ThenVariableExpressionIsEmptyShouldBeTrue
                    XCTAssertTrue(calculation.divisionByZero)
                }
+=======
+    func testGivenTheExpressionIsEmpty_WhenITappeOnOperator_ThenVariableExpressionIsEmptyShouldBeTrue(){
+
+    //          when ITappeOnEqual
+                calculation.expression = ""
+        
+    //          then ThenVariableExpressionIsEmptyShouldBeTrue
+                XCTAssertTrue(calculation.expressionIsEmpty)
+            }
+    
+>>>>>>> 8c58e29ac35996c2033efcab8921e142d62018c1
     // THE TEST RETURN FALSE
     
             func testGivenExpressionNoHaveEqual_WhenITappeOnAEqualButton_ThenVariableExpressionHaveResultShouldBeFalse(){
@@ -155,17 +188,43 @@ class CalculationTestCase: XCTestCase {
                 
     //          then variableCanAddOperatorShoukdBeTrue
                 XCTAssertFalse(calculation.canAddOperator)
+<<<<<<< HEAD
                 XCTAssertFalse(calculation.expressionIsCorrect)
                 XCTAssertFalse(calculation.expressionHaveEnoughElement)
             }
         
         func testGivenTheExprssionOK_WhenITappeOnEqual_ThenFunctPrionpriority0f0perationsShoukdBeReturnTheResult(){
+=======
+            }
+            func testGivenTheExpressionHasAnOperator_WhenITappeOnAEqualNumberr_ThenVariableExpressionIsCorrectShoukdBeFalse(){
+
+    //          when ExpressionHaveValue
+                    calculation.expression = "2 +"
+                    
+    //          then variableCanAddOperatorShoukdBeTrue
+                    XCTAssertFalse(calculation.expressionIsCorrect)
+            }
+        func testGivenTheExpressionIsNotOK_WhenITappeOnEqual_ThenVariableExpressionHaveEnoughElementShouldBeFalse(){
+
+        //          when ExpressionHaveValue
+                    calculation.expression = "2 + "
+            
+        //          then variableCanAddOperatorShoukdBeTrue
+                    XCTAssertFalse(calculation.expressionHaveEnoughElement)
+                }
+        
+        func testGivenTheExprssionOK_WhenITappeOnEqual_ThenFunctionResultShouldReturnError(){
+>>>>>>> 8c58e29ac35996c2033efcab8921e142d62018c1
 
         //          when ITappeOnEqual
                     calculation.expression = "2 + 5"
             
         //          then ThenFunctionresultShouldReturnTheResult
+<<<<<<< HEAD
                     XCTAssert(calculation.priority0f0perations() == "2 + 5 = 7")
+=======
+                    XCTAssert(calculation.result() == "2 + 5 = 7")
+>>>>>>> 8c58e29ac35996c2033efcab8921e142d62018c1
                 }
         func testGivenTheExpressionIsEmpty_WhenITappeOnOperator_ThenVariableExpressionIsEmptyShouldBeFalse(){
 
@@ -174,5 +233,9 @@ class CalculationTestCase: XCTestCase {
             
         //          then ThenVariableExpressionIsEmptyShouldBeTrue
                     XCTAssertFalse(calculation.expressionIsEmpty)
+<<<<<<< HEAD
         }
+=======
+                }
+>>>>>>> 8c58e29ac35996c2033efcab8921e142d62018c1
 }

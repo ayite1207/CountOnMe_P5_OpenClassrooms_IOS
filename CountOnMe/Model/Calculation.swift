@@ -34,6 +34,7 @@ class Calculation {
     var expressionIsEmpty: Bool {
         return expression == ""
     }
+<<<<<<< HEAD
     // lets know if the last calculation is divisoin by zero
    var divisionByZero: Bool {
     return expression.contains("/ 0")
@@ -58,14 +59,25 @@ class Calculation {
      result() allows to make calculate
      */
     func result(){
+=======
+    /**
+     result() allows to calculate and return the result
+     */
+    func result()-> String{
+>>>>>>> 8c58e29ac35996c2033efcab8921e142d62018c1
         // Create local copy of operations
         var operationsToReduce = elements
         // Iterate over operations while an operand still here
         while operationsToReduce.count > 1 {
             let left = Float(operationsToReduce[0])!
             let operand = operationsToReduce[1]
+<<<<<<< HEAD
             let right = Float(operationsToReduce[2])!
             let result: Float
+=======
+            let right = Int(operationsToReduce[2])!
+            let result: Int
+>>>>>>> 8c58e29ac35996c2033efcab8921e142d62018c1
             switch operand {
             case "+": result = left + right
             case "-": result = left - right
@@ -135,9 +147,15 @@ class Calculation {
                 calcul(operatorCalcul: "/", positionInArray: division)
             }
         }
+<<<<<<< HEAD
         result()
         let finalResult = "\(operation) = \(expression)"
         expression = finalResult
         return finalResult
+=======
+        
+       expression = "\(resultat) = \(operationsToReduce.first!)"
+        return expression
+>>>>>>> 8c58e29ac35996c2033efcab8921e142d62018c1
     }
 }
