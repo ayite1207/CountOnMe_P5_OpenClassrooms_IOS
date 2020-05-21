@@ -9,38 +9,65 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     @IBOutlet weak var textView: UITextView!
 //    @IBOutlet var numberButtons: [UIButton]!
-     var calculation = Calculation()
+    var calculation = Calculation()
     
     // View Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+    calculation.expression = textView.text
         // Do any additional setup after loading the view.
     }
-    
-    // View actions
+    /**
+     alertVC() allows to display a message when the expression is not correct
+     */
+    func alertVC() {
+        let alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        return self.present(alertVC, animated: true, completion: nil)
+    }
+    /**
+     restartOperation() erased the string of the textView and the expression
+
+     */
+    fileprivate func restartOperation() {
+        textView.text = ""
+        calculation.expression = ""
+    }
+    /**
+     tappedNumberButton() allows to display a number in the textView and initializes the variable expression
+     
+     - Parameters:
+        - sender : represents the button of a number the user pressed
+     */
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         guard let numberText = sender.title(for: .normal) else {
             return
         }
-               print("tappedNumberButton")
-        print(calculation.expressionHaveResult)
         if calculation.expressionHaveResult {
-            print("expressionHaveResult = true")
-            textView.text = ""
-            calculation.expression = ""
-        }else{
-            print("expressionHaveResult = false")
+            restartOperation()
         }
         textView.text.append(numberText)
         calculation.expression.append(contentsOf: numberText)
-        print("expression A LA FIN = \(calculation.expression)")
     }
-    
+    /**
+     tappedOperatorButton() allows to display an operator in the textView and initializes the variable expression
+     
+     - Parameters:
+        - sender : represents the button of a operator the user pressed
+     */
     @IBAction func tappedOperatorButton(_ sender: UIButton) {
-        print("operateur")
         guard let operatorButton = sender.titleLabel?.text! else { return}
+        if calculation.expressionHaveResult {
+            restartOperation()
+        }
+        
+        if calculation.expressionIsEmpty {
+            return alertVC()
+        }
+        
         if calculation.canAddOperator {
             textView.text.append(" \(operatorButton) ")
             calculation.expression = textView.text
@@ -51,21 +78,41 @@ class ViewController: UIViewController {
         }
     }
     
-
+    /**
+     tappedEqualButton() allows to display the result in the textView
+     
+     - Parameters:
+        - sender : represents the button equal the user pressed
+     */
     @IBAction func tappedEqualButton(_ sender: UIButton) {
-        print("equal")
+        
+        if calculation.expressionHaveResult {
+            restartOperation()
+        }
+        
+        if calculation.divisionByZero {
+            restartOperation()
+            return alertVC()
+        }
+        
         guard calculation.expressionIsCorrect else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            return self.present(alertVC, animated: true, completion: nil)
+            return alertVC()
         }
         
         guard calculation.expressionHaveEnoughElement else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Démarrez un nouveau calcul !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            return self.present(alertVC, animated: true, completion: nil)
+            return alertVC()
         }
-        textView.text = calculation.result()
+        textView.text = calculation.priority0f0perations()
     }
+    /**
+     tappedCancelButton() erases the string of the textView and the expression
+     
+     - Parameters:
+        - sender : represents the button equal the user pressed
+     */
+    @IBAction func tappedCancelButton(_ sender: UIButton) {
+        restartOperation()
+    }
+    
 }
 
